@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { BiSearch } from 'react-icons/bi';
 
 export default function Header() {
   return (
@@ -13,6 +14,7 @@ export default function Header() {
       <div className='flex items-center space-x-2 md:space-x-8'>
         <form className='flex items-center space-x-2'>
           <button type='submit'>
+          <BiSearch />
           </button>
           <input
             type='search'

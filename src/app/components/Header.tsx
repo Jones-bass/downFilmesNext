@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { BiSearch } from 'react-icons/bi';
 
@@ -10,11 +11,20 @@ export default function Header() {
         <Link href='/'>
           Logo downFilmes
         </Link>
+
+        <nav>
+          <ul className='hidden md:flex md:space-x-4'>
+            <Link href='/search?genre=Comedy'>Comedia</Link>
+            <Link href='/search?genre=Action'> Ação</Link>
+            <Link href='/search?genre=Adventure'>Aventura</Link>
+            <Link href='/search?genre=Animation'>Animação</Link>
+          </ul>
+        </nav>
       </div>
       <div className='flex items-center space-x-2 md:space-x-8'>
         <form className='flex items-center space-x-2'>
           <button type='submit'>
-          <BiSearch />
+            <BiSearch />
           </button>
           <input
             type='search'

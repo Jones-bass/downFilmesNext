@@ -1,11 +1,11 @@
-import { FaFistRaised, FaGhost, FaHeart, FaBabyCarriage, FaCross, FaCompass, FaRegCompass, FaRegHeart } from 'react-icons/fa';
-import { GiCompass, GiDramaMasks, GiMantrap, GiTrafficLightsReadyToGo } from 'react-icons/gi';
+import { FaRegCompass, FaRegHeart } from 'react-icons/fa';
+import { GiDramaMasks } from 'react-icons/gi';
 import { ButtonLink } from "./ButtonLink";
-import { BsUsbPlug } from 'react-icons/bs';
 import { MdChildCare } from 'react-icons/md';
 import { PiCross } from 'react-icons/pi';
 import { RiSkullLine } from 'react-icons/ri';
 import { SlFire } from 'react-icons/sl';
+import { BiHappyBeaming } from 'react-icons/bi';
 
 export function Banner() {
   return (
@@ -47,6 +47,7 @@ export function Banner() {
         <div className="flex flex-wrap gap-2 md:gap-3">
           <ButtonLink href="/" text="Ação" icon={<SlFire className="h-4 w-4" />} />
           <ButtonLink href="/" text="Terror" icon={<RiSkullLine className="h-4 w-4" />} />
+          <ButtonLink href="/" text="Comédia" icon={<BiHappyBeaming className="h-4 w-4" />} />
           <ButtonLink href="/" text="Aventura" icon={<FaRegCompass className="h-4 w-4" />} />
           <ButtonLink href="/" text="Infantil" icon={<MdChildCare className="h-4 w-4" />} />
           <ButtonLink href="/" text="Religioso" icon={<PiCross className="h-4 w-4" />} />

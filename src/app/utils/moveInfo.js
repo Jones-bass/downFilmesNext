@@ -1,12 +1,11 @@
 export const moveInfo = [
-
   {
     title: "Avatar",
     year: "2009",
     rated: "PG-13",
     released: "18 Dec 2009",
     runtime: "162 min",
-    genre: "Action, Adventure, Fantasy",
+    genre: ["Action, Adventure, Fantasy"],
     director: "James Cameron",
     writer: "James Cameron",
     actors: "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
@@ -20,14 +19,6 @@ export const moveInfo = [
     imdbVotes: "890,617",
     id: "tt0499549",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyOTYyMzUxNl5BMl5BanBnXkFtZTcwNTg0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2ODQ3NjMyMl5BMl5BanBnXkFtZTcwODg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxOTEwNDcxN15BMl5BanBnXkFtZTcwOTg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
-    ]
   },
   {
     title: "I Am Legend",
@@ -35,7 +26,7 @@ export const moveInfo = [
     rated: "PG-13",
     released: "14 Dec 2007",
     runtime: "101 min",
-    genre: "Drama, Horror, Sci-Fi",
+    genre: ["Drama, Horror, Sci-Fi"],
     director: "Francis Lawrence",
     writer: "Mark Protosevich (screenplay), Akiva Goldsman (screenplay), Richard Matheson (novel), John William Corrington, Joyce Hooper Corrington",
     actors: "Will Smith, Alice Braga, Charlie Tahan, Salli Richardson-Whitfield",
@@ -49,13 +40,6 @@ export const moveInfo = [
     imdbVotes: "533,874",
     id: "tt0480249",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI0NTI4NjE3NV5BMl5BanBnXkFtZTYwMDA0Nzc4._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTIwMDg2MDU4M15BMl5BanBnXkFtZTYwMTA0Nzc4._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc5MDM1OTU5OV5BMl5BanBnXkFtZTYwMjA0Nzc4._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0MTI2NjMzMzFeQTJeQWpwZ15BbWU2MDMwNDc3OA@@._V1_.jpg"
-    ]
   },
   {
     title: "300",
@@ -63,7 +47,7 @@ export const moveInfo = [
     rated: "R",
     released: "09 Mar 2007",
     runtime: "117 min",
-    genre: "Action, Drama, Fantasy",
+    genre: ["Action, Drama, Fantasy"],
     director: "Zack Snyder",
     writer: "Zack Snyder (screenplay), Kurt Johnstad (screenplay), Michael Gordon (screenplay), Frank Miller (graphic novel), Lynn Varley (graphic novel)",
     actors: "Gerard Butler, Lena Headey, Dominic West, David Wenham",
@@ -77,12 +61,6 @@ export const moveInfo = [
     imdbVotes: "611,046",
     id: "tt0416449",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwNTg5MzMwMV5BMl5BanBnXkFtZTcwMzA2NTIyMw@@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQwNTgyNTMzNF5BMl5BanBnXkFtZTcwNDA2NTIyMw@@._V1_SX1777_CR0,0,1777,935_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0MjQzOTEwMV5BMl5BanBnXkFtZTcwMzE2NTIyMw@@._V1_SX1777_CR0,0,1777,947_AL_.jpg"
-    ]
   },
   {
     title: "The Avengers",
@@ -90,7 +68,7 @@ export const moveInfo = [
     rated: "PG-13",
     released: "04 May 2012",
     runtime: "143 min",
-    genre: "Action, Sci-Fi, Thriller",
+    genre: ["Action, Sci-Fi, Thriller"],
     director: "Joss Whedon",
     writer: "Joss Whedon (screenplay), Zak Penn (story), Joss Whedon (story)",
     actors: "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth",
@@ -104,22 +82,15 @@ export const moveInfo = [
     imdbVotes: "1,003,301",
     id: "tt0848228",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0NjY0NzE4OTReQTJeQWpwZ15BbWU3MDczODg2Nzc@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE1MzEzMjcyM15BMl5BanBnXkFtZTcwNDM4ODY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMwMzM2MTg1M15BMl5BanBnXkFtZTcwNjM4ODY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4NzM2Mjc5MV5BMl5BanBnXkFtZTcwMTkwOTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc3MzQ3NjA5N15BMl5BanBnXkFtZTcwMzY5OTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
-    ]
   },
+  
   {
     title: "The Wolf of Wall Street",
     year: "2013",
     rated: "R",
     released: "25 Dec 2013",
     runtime: "180 min",
-    genre: "Biography, Comedy, Crime",
+    genre: ["Biography, Comedy, Crime"],
     director: "Martin Scorsese",
     writer: "Terence Winter (screenplay), Jordan Belfort (book)",
     actors: "Leonardo DiCaprio, Jonah Hill, Margot Robbie, Matthew McConaughey",
@@ -133,14 +104,6 @@ export const moveInfo = [
     imdbVotes: "786,985",
     id: "tt0993846",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDIwMDIxNzk3Ml5BMl5BanBnXkFtZTgwMTg0MzQ4MDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0NzAxODAyMl5BMl5BanBnXkFtZTgwMDg0MzQ4MDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTExMDk1MDE4NzVeQTJeQWpwZ15BbWU4MDM4NDM0ODAx._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3MTY4NDk4Nl5BMl5BanBnXkFtZTgwNjc0MzQ4MDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzMTg4MDI0Ml5BMl5BanBnXkFtZTgwOTY0MzQ4MDE@._V1_SY1000_CR0,0,1553,1000_AL_.jpg"
-    ]
   },
   {
     title: "Interstellar",
@@ -148,7 +111,7 @@ export const moveInfo = [
     rated: "PG-13",
     released: "07 Nov 2014",
     runtime: "169 min",
-    genre: "Adventure, Drama, Sci-Fi",
+    genre: ["Adventure, Drama, Sci-Fi"],
     director: "Christopher Nolan",
     writer: "Jonathan Nolan, Christopher Nolan",
     actors: "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
@@ -162,14 +125,6 @@ export const moveInfo = [
     imdbVotes: "937,412",
     id: "tt0816692",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA3NTEwOTMxMV5BMl5BanBnXkFtZTgwMjMyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMzQ5ODE2MzEwM15BMl5BanBnXkFtZTgwMTMyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4Njk4MzY0Nl5BMl5BanBnXkFtZTgwMzIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMzE3MTM0MTc3Ml5BMl5BanBnXkFtZTgwMDIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNjYzNjE2NDk3N15BMl5BanBnXkFtZTgwNzEyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
-    ]
   },
   {
     title: "Game of Thrones",
@@ -177,7 +132,7 @@ export const moveInfo = [
     rated: "TV-MA",
     released: "17 Apr 2011",
     runtime: "56 min",
-    genre: "Adventure, Drama, Fantasy",
+    genre: ["Adventure, Drama, Fantasy"],
     director: "N/A",
     writer: "David Benioff, D.B. Weiss",
     actors: "Peter Dinklage, Lena Headey, Emilia Clarke, Kit Harington",
@@ -191,23 +146,14 @@ export const moveInfo = [
     imdbVotes: "1,046,830",
     id: "tt0944947",
     type: "series",
-    totalSeaons: "7",
-    respone: "True",
-    "images": [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDc1MGUyNzItNWRkOC00MjM1LWJjNjMtZTZlYWIxMGRmYzVlXkEyXkFqcGdeQXVyMzU3MDEyNjk@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BZjZkN2M5ODgtMjQ2OC00ZjAxLWE1MjMtZDE0OTNmNGM0NWEwXkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMDk4Y2Y1MDAtNGVmMC00ZTlhLTlmMmQtYjcyN2VkNzUzZjg2XkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNjZjNWIzMzQtZWZjYy00ZTkwLWJiMTYtOWRkZDBhNWJhY2JmXkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNTMyMTRjZWEtM2UxMS00ZjU5LWIxMTYtZDA5YmJhZmRjYTc4XkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
-    ]
   },
   {
     title: "Vikings",
-    year: "2013–",
+    year: "2013",
     rated: "TV-14",
     released: "03 Mar 2013",
     runtime: "44 min",
-    genre: "Action, Drama, History",
+    genre: ["Action, Drama, History"],
     director: "N/A",
     writer: "Michael Hirst",
     actors: "Travis Fimmel, Clive Standen, Gustaf Skarsgård, Katheryn Winnick",
@@ -221,15 +167,6 @@ export const moveInfo = [
     imdbVotes: "198,041",
     id: "tt2306299",
     type: "series",
-    totalSeaons: "5",
-    respone: "True",
-    "images": [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM5MTM1ODUxNV5BMl5BanBnXkFtZTgwNTAzOTI2ODE@._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNzU2NDcxODMyOF5BMl5BanBnXkFtZTgwNDAzOTI2ODE@._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMzMzIzOTU2M15BMl5BanBnXkFtZTgwODMzMTkyODE@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2NTQ2MDA3NF5BMl5BanBnXkFtZTgwODkxMDUxODE@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTcxOTQ3NTA5N15BMl5BanBnXkFtZTgwMzExMDUxODE@._V1_SY1000_SX1500_AL_.jpg"
-    ]
   },
   {
     title: "Gotham",
@@ -237,7 +174,7 @@ export const moveInfo = [
     rated: "TV-14",
     released: "01 Aug 2014",
     runtime: "42 min",
-    genre: "Action, Crime, Drama",
+    genre: ["Action, Crime, Drama"],
     director: "N/A",
     writer: "Bruno Heller",
     actors: "Ben McKenzie, Donal Logue, David Mazouz, Sean Pertwee",
@@ -251,15 +188,6 @@ export const moveInfo = [
     imdbVotes: "133,375",
     id: "tt3749900",
     type: "series",
-    totalSeaons: "3",
-    respone: "True",
-    "images": [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDI3ODYyODY4OV5BMl5BanBnXkFtZTgwNjE5NDMwMDI@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5OTExMTIwNF5BMl5BanBnXkFtZTgwMjI5NDMwMDI@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3MDY2NjA3MzBeQTJeQWpwZ15BbWU4MDU0MDkzODgx._V1_SX1499_CR0,0,1499,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3MzYzNDgzOV5BMl5BanBnXkFtZTgwMjQwOTM4ODE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwODAyNjk0NF5BMl5BanBnXkFtZTgwODU4MzMyODE@._V1_SY1000_CR0,0,1500,1000_AL_.jpg"
-    ]
   },
   {
     title: "Power",
@@ -267,7 +195,7 @@ export const moveInfo = [
     rated: "TV-MA",
     released: "N/A",
     runtime: "50 min",
-    genre: "Crime, Drama",
+    genre: ["Crime, Drama"],
     director: "N/A",
     writer: "Courtney Kemp Agboh",
     actors: "Omari Hardwick, Joseph Sikora, Andy Bean, Lela Loren",
@@ -281,15 +209,6 @@ export const moveInfo = [
     imdbVotes: "14,770",
     id: "tt3281796",
     type: "series",
-    totalSeaons: "3",
-    respone: "True",
-    "images": [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2ODg0MzMzM15BMl5BanBnXkFtZTgwODYxODA5NTE@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTcyMjA0MzczNV5BMl5BanBnXkFtZTgwNTIyODA5NTE@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk0MTI0NzQ2NV5BMl5BanBnXkFtZTgwMDkxODA5NTE@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4Mzk1ODcxM15BMl5BanBnXkFtZTgwNDQyODA5NTE@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwNTE0NDI1M15BMl5BanBnXkFtZTgwMDQyODA5NTE@._V1_SY1000_SX1500_AL_.jpg"
-    ]
   },
   {
     title: "Narcos",
@@ -297,7 +216,7 @@ export const moveInfo = [
     rated: "TV-MA",
     released: "28 Aug 2015",
     runtime: "49 min",
-    genre: "Biography, Crime, Drama",
+    genre: ["Biography, Crime, Drama"],
     director: "N/A",
     writer: "Carlo Bernard, Chris Brancato, Doug Miro, Paul Eckstein",
     actors: "Wagner Moura, Boyd Holbrook, Pedro Pascal, Joanna Christie",
@@ -311,15 +230,6 @@ export const moveInfo = [
     imdbVotes: "118,680",
     id: "tt2707408",
     type: "series",
-    totalSeaons: "2",
-    respone: "True",
-    "images": [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2MDMzMTc0MF5BMl5BanBnXkFtZTgwMTAyMzA1OTE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMDkyOTEyNV5BMl5BanBnXkFtZTgwNjY3Mjc3OTE@._V1_SY1000_SX1500_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA2NDUwMTU2NV5BMl5BanBnXkFtZTgwNTI1Mzc3OTE@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BODA1NjAyMTQ3Ml5BMl5BanBnXkFtZTgwNjI1Mzc3OTE@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU0NzQ0OTAwNl5BMl5BanBnXkFtZTgwMDAyMzA1OTE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
-    ]
   },
   {
     title: "Breaking Bad",
@@ -327,7 +237,7 @@ export const moveInfo = [
     rated: "TV-14",
     released: "20 Jan 2008",
     runtime: "49 min",
-    genre: "Crime, Drama, Thriller",
+    genre: ["Crime, Drama, Thriller"],
     director: "N/A",
     writer: "Vince Gilligan",
     actors: "Bryan Cranston, Anna Gunn, Aaron Paul, Dean Norris",
@@ -341,24 +251,14 @@ export const moveInfo = [
     imdbVotes: "889,883",
     id: "tt0903747",
     type: "series",
-    totalSeaons: "5",
-    respone: "True",
-    "images": [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgyMzI5NDc5Nl5BMl5BanBnXkFtZTgwMjM0MTI2MDE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2NDkwNDk5NV5BMl5BanBnXkFtZTgwNDM0MTI2MDE@._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM4NDcyNDMzMF5BMl5BanBnXkFtZTgwOTI0MTI2MDE@._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTAzMTczMjM3NjFeQTJeQWpwZ15BbWU4MDc1MTI1MzAx._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5MTE3MTgwMF5BMl5BanBnXkFtZTgwOTQxMjUzMDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
-    ]
   },
   {
-    "ComingSoon": true,
     title: "Doctor Strange",
     year: "2016",
     rated: "N/A",
     released: "04 Nov 2016",
     runtime: "N/A",
-    genre: "Action, Adventure, Fantasy",
+    genre: ["Action, Adventure, Fantasy"],
     director: "Scott Derrickson",
     writer: "Scott Derrickson (screenplay), C. Robert Cargill (screenplay), Jon Spaihts (story by), Scott Derrickson (story by), C. Robert Cargill (story by), Steve Ditko (comic book)",
     actors: "Rachel McAdams, Benedict Cumberbatch, Mads Mikkelsen, Tilda Swinton",
@@ -372,21 +272,12 @@ export const moveInfo = [
     imdbVotes: "N/A",
     id: "tt1211837",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3ODc1ODI5Ml5BMl5BanBnXkFtZTgwODMzMDY3OTE@._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxNTAyNTU0NV5BMl5BanBnXkFtZTgwNzMzMDY3OTE@._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE5NDc5NzUwNV5BMl5BanBnXkFtZTgwMDM3MDM2NzE@._V1_.jpg"
-    ]
-  },
-  {
-    "ComingSoon": true,
     title: "Rogue One: A Star Wars Story",
     year: "2016",
     rated: "N/A",
     released: "16 Dec 2016",
     runtime: "N/A",
-    genre: "Action, Adventure, Sci-Fi",
+    genre: ["Action, Adventure, Sci-Fi"],
     director: "Gareth Edwards",
     writer: "Chris Weitz (screenplay), Tony Gilroy (screenplay), John Knoll (story), Gary Whitta (story), George Lucas (characters)",
     actors: "Felicity Jones, Riz Ahmed, Mads Mikkelsen, Ben Mendelsohn",
@@ -400,23 +291,14 @@ export const moveInfo = [
     imdbVotes: "N/A",
     id: "tt3748528",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3MzA4Nzk3NV5BMl5BanBnXkFtZTgwNjAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDMxMTQzMjQxM15BMl5BanBnXkFtZTgwNzAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNjkxOTk5NV5BMl5BanBnXkFtZTgwODAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNjM4MzExNDAyNl5BMl5BanBnXkFtZTgwOTAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3NTgxMDcyNV5BMl5BanBnXkFtZTgwMDExMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg"
-    ]
   },
   {
-    "ComingSoon": true,
     title: "Assassin's Creed",
     year: "2016",
     rated: "N/A",
     released: "21 Dec 2016",
     runtime: "N/A",
-    genre: "Action, Adventure, Fantasy",
+    genre: ["Action, Adventure, Fantasy"],
     director: "Justin Kurzel",
     writer: "Bill Collage (screenplay), Adam Cooper (screenplay), Michael Lesslie (screenplay)",
     actors: "Michael Fassbender, Michael Kenneth Williams, Marion Cotillard, Jeremy Irons",
@@ -430,22 +312,14 @@ export const moveInfo = [
     imdbVotes: "N/A",
     id: "tt2094766",
     type: "movie",
-    response: "True",
-    images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BN2EyYzgyOWEtNTY2NS00NjRjLWJiNDYtMWViMjg5MWZjYjgzXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYwOWYzOTctOTc4My00ZmJkLTgzMTctMmUxNDI5ODQzYzNjXkEyXkFqcGdeQXVyNDAyODU1Njc@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BZTY5ZGUxMTAtYTU0OC00NGQ2LTkzNzgtZGZmNjlmNjY3MGU0XkEyXkFqcGdeQXVyNTY0MTkxMTg@._V1_SY1000_CR0,0,1500,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BZjA0MWYwZTEtYzc5Yi00NGM2LTg1YTctNjY2YzQ0NDJhZDAwXkEyXkFqcGdeQXVyNDAyODU1Njc@._V1_SY1000_CR0,0,1499,1000_AL_.jpg"
-    ]
   },
   {
-    "ComingSoon": true,
     title: "Luke Cage",
     year: "2016–",
     rated: "TV-MA",
     released: "30 Sep 2016",
     runtime: "55 min",
-    genre: "Action, Crime, Drama",
+    genre: ["Action, Crime, Drama"],
     director: "N/A",
     writer: "Cheo Hodari Coker",
     actors: "Mahershala Ali, Mike Colter, Frankie Faison, Erik LaRay Harvey",
@@ -459,14 +333,5 @@ export const moveInfo = [
     imdbVotes: "N/A",
     id: "tt3322314",
     type: "series",
-    totalSeaons: "1",
-    respone: "True",
-    "images": [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMxNjc1NjI0NV5BMl5BanBnXkFtZTgwNzA0NzY0ODE@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjI1MDg3NjY2OF5BMl5BanBnXkFtZTgwNDE1NDU4OTE@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BOTYzOTQyNDYxNl5BMl5BanBnXkFtZTgwNzA1NDU4OTE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMjA3MTQ5Ml5BMl5BanBnXkFtZTgwOTA1NDU4OTE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNjg5ODYwNF5BMl5BanBnXkFtZTgwMTE1NDU4OTE@._V1_SY1000_CR0,0,1477,1000_AL_.jpg"
-    ]
   }
 ]

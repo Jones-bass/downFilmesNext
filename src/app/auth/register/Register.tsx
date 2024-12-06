@@ -2,7 +2,7 @@
 
 
 import { z } from 'zod';
-import { FiLock, FiMail } from 'react-icons/fi';
+import { FiLock, FiMail, FiUser } from 'react-icons/fi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FormProvider } from 'react-hook-form';
 
@@ -16,6 +16,18 @@ import Image from 'next/image';
 import logo from '../../../../public/logo2.png'
 
 const createUserSchema = z.object({
+  name: z
+    .string()
+    .min(1, {
+      message: 'O nome é obrigatório',
+    })
+    .transform((name) => {
+      return name
+        .trim()
+        .split(' ')
+        .map((word) => word[0].toLocaleUpperCase().concat(word.substring(1)))
+        .join(' ')
+    }),
   email: z
     .string()
     .min(1, {
@@ -38,11 +50,11 @@ const createUserSchema = z.object({
     .regex(/[^A-Za-z0-9]/, {
       message: 'A senha deve ter pelo menos um caractere especial.',
     }),
-});
+})
 
 type CreateUserData = z.infer<typeof createUserSchema>;
 
-export default function Login() {
+export default function Register() {
   const [loading, setLoading] = useState(false);
 
   const createUserForm = useForm<CreateUserData>({
@@ -83,7 +95,14 @@ export default function Login() {
             onSubmit={handleSubmit(handleOnSubmit)}
             className="w-full text-center space-y-6"
           >
-            <h2 className="text-xl font-light text-gray-700">Acesse sua conta</h2>
+            <h2 className="text-xl font-light text-gray-700">Realize seu Cadastro</h2>
+            <Input
+              name="name"
+              placeholder="Nome"
+              icon={FiUser}
+              errorMessage={errors?.name?.message ?? ''}
+            />
+
             <Input
               name="email"
               placeholder="E-mail"
@@ -99,20 +118,20 @@ export default function Login() {
               errorMessage={errors?.password?.message ?? ''}
             />
 
-            <Button title="Login" size="large" type="submit" disabled={loading}>
+            <Button title="Cadastrar" size="large" type="submit" disabled={loading}>
               {loading ? (
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
               ) : (
-                'Login'
+                'Cadastrar'
               )}
             </Button>
           </form>
         </FormProvider>
 
         <Link
-          href="/auth/register"
+          href="/auth/forgot-password"
           className="mt-4 flex items-center text-gray-500 hover:text-gray-700 transition">
-          Quero me cadastrar
+          Esqueci minha senha
         </Link>
       </div>
     </div>

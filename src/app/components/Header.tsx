@@ -5,6 +5,7 @@ import { BiSearch } from 'react-icons/bi';
 import { useScroll } from '../hooks/useScroll';
 import logo from '../../../public/logo.png'
 import Image from 'next/image';
+import { CiLogin } from 'react-icons/ci';
 
 export default function Header() {
   const isScrolled = useScroll();
@@ -26,12 +27,13 @@ export default function Header() {
 
         <nav>
           <ul className='hidden md:flex md:space-x-4'>
-            <Link href='/search?genre=Comedy'>Comedia</Link>
-            <Link href='/search?genre=Action'> Ação</Link>
-            <Link href='/search?genre=Adventure'>Aventura</Link>
-            <Link href='/search?genre=Animation'>Animação</Link>
+            <Link href='/search?genre=Comedy' className='hover:text-gray-300 transition'>Comedia</Link>
+            <Link href='/search?genre=Action' className='hover:text-gray-300 transition'> Ação</Link>
+            <Link href='/search?genre=Adventure' className='hover:text-gray-300 transition'>Aventura</Link>
+            <Link href='/search?genre=Animation' className='hover:text-gray-300 transition'>Animação</Link>
           </ul>
         </nav>
+
       </div>
       <div className='flex items-center space-x-2 md:space-x-8'>
         <form className='flex items-center space-x-2'>
@@ -47,6 +49,10 @@ export default function Header() {
           />
         </form>
 
+        <Link href='/auth/login' className='flex items-center cursor-pointer space-x-2 hover:text-gray-300 transition'>
+          <CiLogin className='text-lg' /> {/* Adicione ajuste no tamanho, se necessário */}
+          <span>Área Membro</span>
+        </Link>
       </div>
     </header>
   );

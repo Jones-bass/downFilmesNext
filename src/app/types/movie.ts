@@ -9,7 +9,7 @@ export type MovieProps = {
   director: string;
   writer: string;
   actors: string;
-  plot: string;
+  description: string;
   language: string;
   country: string;
   awards: string;

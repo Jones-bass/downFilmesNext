@@ -9,11 +9,13 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { useCallback, useState } from 'react';
 import { Input } from '../../components/Input';
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
 
 import Link from 'next/link';
 import { Button } from '@/app/components/Button';
 import Image from 'next/image';
 import logo from '../../../../public/logo2.png'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 const createUserSchema = z.object({
   name: z
@@ -55,29 +57,55 @@ const createUserSchema = z.object({
 type CreateUserData = z.infer<typeof createUserSchema>;
 
 export default function Register() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
 
-  const createUserForm = useForm<CreateUserData>({
+  const form = useForm<CreateUserData>({
     resolver: zodResolver(createUserSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    }
   });
 
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = createUserForm;
+  } = form;
 
-  const handleOnSubmit = useCallback(
-    async (data: CreateUserData) => {
-      try {
-        setLoading(true);
-        console.log('user', data);
+  const handleOnSubmit = async (values: CreateUserData) => {
+    setLoading(true);
 
-      } catch {
-        setLoading(false);
+    try {
+      const supabase = createClientComponentClient();
+      const { email, password } = values;
+
+      const { error, data: { user } } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${location.origin}/auth/callback`
+        }
+      });
+
+      if (error) {
+        throw new Error(error.message);
       }
-    },
-    []
-  );
+
+      if (user) {
+        form.reset(); 
+        alert("Account created successfully. Please check your email to verify your account.",);
+        router.refresh(); 
+      } 
+    } catch (error: any) {
+      alert("There was an issue creating your account.");
+    } finally {
+      setLoading(false); 
+    }
+  };
+
 
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900">
@@ -90,7 +118,7 @@ export default function Register() {
           className='cursor-pointer mb-6 mt-6'
         />
 
-        <FormProvider {...createUserForm}>
+        <FormProvider {...form}>
           <form
             onSubmit={handleSubmit(handleOnSubmit)}
             className="w-full text-center space-y-6"

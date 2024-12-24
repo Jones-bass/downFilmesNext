@@ -16,6 +16,7 @@ import { Button } from '@/app/components/Button';
 import Image from 'next/image';
 import logo from '../../../../public/logo2.png'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { toast } from 'react-toastify';
 
 const createUserSchema = z.object({
   name: z
@@ -96,11 +97,11 @@ export default function Register() {
 
       if (user) {
         form.reset(); 
-        alert("Account created successfully. Please check your email to verify your account.",);
+        toast.success('Usuário cadastrado com Sucesso.')
         router.refresh(); 
       } 
     } catch (error: any) {
-      alert("There was an issue creating your account.");
+      toast.error('Ocorreu um erro ao se cadastrar, tente novamente!')
     } finally {
       setLoading(false); 
     }

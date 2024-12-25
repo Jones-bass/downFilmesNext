@@ -1,9 +1,25 @@
 import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
-import { z } from "zod"; 
+import { z } from "zod";
 
 const movieSchema = z.object({
   title: z.string().min(1, { message: "O título é obrigatório." }),
+  year: z.string().min(1, { message: "O year é obrigatório." }),
+  rated: z.string().min(1, { message: "O título é obrigatório." }),
+  released: z.string().min(1, { message: "O released é obrigatório." }),
+  runtime: z.string().min(1, { message: "O runtime é obrigatório." }),
+  genre: z.string().min(1, { message: "O genre é obrigatório." }),
+  director: z.string().min(1, { message: "O director é obrigatório." }),
+  writer: z.string().min(1, { message: "O writer é obrigatório." }),
+  actors: z.string().min(1, { message: "O actors é obrigatório." }),
+  description: z.string().min(1, { message: "O description é obrigatório." }),
+  language: z.string().min(1, { message: "O language é obrigatório." }),
+  country: z.string().min(1, { message: "O country é obrigatório." }),
+  awards: z.string().min(1, { message: "O awards é obrigatório." }),
+  image: z.string().min(1, { message: "O image é obrigatório." }),
+  imdbRating: z.string().min(1, { message: "O imdbRating é obrigatório." }),
+  imdbVotes: z.string().min(1, { message: "O imdbVotes é obrigatório." }),
+  type: z.string().min(1, { message: "O type é obrigatório." }),
 });
 
 export async function GET() {
@@ -19,6 +35,22 @@ export async function POST(req: Request) {
     const movie = await prisma.movie.create({
       data: {
         title: validatedData.title,
+        year: validatedData.year,
+        rated: validatedData.rated,
+        released: validatedData.released,
+        runtime: validatedData.runtime,
+        genre: validatedData.genre,
+        director: validatedData.director,
+        writer: validatedData.writer,
+        actors: validatedData.actors,
+        description: validatedData.description,
+        language: validatedData.language,
+        country: validatedData.country,
+        awards: validatedData.awards,
+        image: validatedData.image,
+        imdbRating: validatedData.imdbRating,
+        imdbVotes: validatedData.imdbVotes,
+        type: validatedData.type,
       },
     });
 

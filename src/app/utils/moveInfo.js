@@ -259,6 +259,8 @@ export const moveInfo = [
     imdbVotes: "N/A",
     id: "tt1211837",
     type: "movie",
+  },
+  {
     title: "Rogue One: A Star Wars Story",
     year: "2016",
     rated: "N/A",

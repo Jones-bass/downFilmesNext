@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form'
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   errorMessage: string
-  icon: React.ComponentType<IconBaseProps>
+  icon?: React.ComponentType<IconBaseProps>
 }
 
 export const Input = ({

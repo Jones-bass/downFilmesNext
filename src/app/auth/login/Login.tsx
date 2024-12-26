@@ -5,7 +5,7 @@ import { FiLock, FiMail } from 'react-icons/fi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FormProvider } from 'react-hook-form';
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Input } from '../../components/Input';
 import { ReloadIcon } from "@radix-ui/react-icons";
 
@@ -62,7 +62,7 @@ export default function Login() {
     formState: { errors, isSubmitting },
   } = form;
 
-  const handleOnSubmit = async (values: CreateUserData) => {
+  const onSubmit = async (values: CreateUserData) => {
     setLoading(true);
 
     try {
@@ -84,6 +84,8 @@ export default function Login() {
       if (user) {
         form.reset(); 
         toast.success('Login efetuado com sucesso.')
+        router.push('/dashboard'); 
+        
         router.refresh(); 
       } 
     } catch (error: any) {
@@ -106,7 +108,7 @@ export default function Login() {
 
         <FormProvider {...form}>
           <form
-            onSubmit={handleSubmit(handleOnSubmit)}
+            onSubmit={form.handleSubmit(onSubmit)}
             className="w-full text-center space-y-6"
           >
             <h2 className="text-xl font-light text-gray-700">Acesse sua conta</h2>

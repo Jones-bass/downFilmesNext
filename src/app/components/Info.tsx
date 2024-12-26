@@ -38,7 +38,7 @@ export const Info = ({ movie }: { movie: MovieProps }) => (
     </div>
 
     <div className='mt-4 text-xs text-white lg:text-sm'>
-      <p>{movie.genre.join(' · ')}</p>
+      <p>{movie.genre}</p>
     </div>
   </div>
 );

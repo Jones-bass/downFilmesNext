@@ -23,8 +23,16 @@ const movieSchema = z.object({
 });
 
 export async function GET() {
-  const movies = await prisma.movie.findMany();
-  return NextResponse.json({ movies });
+  try {
+    const movies = await prisma.movie.findMany();
+
+    return NextResponse.json({ movies });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Erro ao buscar os filmes." },
+      { status: 500 }
+    );
+  }
 }
 
 export async function POST(req: Request) {

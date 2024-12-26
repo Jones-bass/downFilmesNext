@@ -39,10 +39,13 @@ export function Banner() {
       </div>
 
       <div className="relative z-10 flex flex-col items-start justify-center space-y-4 py-16 px-4 text-white md:space-y-6 lg:h-[50vh] lg:pb-12 lg:px-16">
-        <h1 className="text-4xl font-bold md:text-5xl lg:text-7xl">Os Melhores Filmes</h1>
-        <p className="text-shadow-md text-sm text-gray-300 md:max-w-lg md:text-lg lg:max-w-2xl">
-          só encontra aqui!
-        </p>
+        <div className="p-0 m-0">
+
+          <h1 className="text-4xl font-bold md:text-5xl lg:text-7xl">Os Filmes Mais Incríveis!</h1>
+
+          <p className="text-shadow-md text-sm text-gray-300 md:max-w-lg md:text-lg lg:max-w-2xl">
+            Aventuras épicas, emoções inesquecíveis e histórias. Prepare a pipoca e aproveite!</p>
+        </div>
 
         <div className="flex flex-wrap gap-2 md:gap-3">
           <ButtonLink href="/" text="Ação" icon={<SlFire className="h-4 w-4" />} />

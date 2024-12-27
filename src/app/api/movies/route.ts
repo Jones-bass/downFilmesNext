@@ -22,11 +22,31 @@ const movieSchema = z.object({
   type: z.string().min(1, { message: "O type é obrigatório." }),
 });
 
-export async function GET() {
-  try {
-    const movies = await prisma.movie.findMany();
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id"); // Verifica se existe um ID na query string
 
-    return NextResponse.json({ movies });
+  try {
+    if (id) {
+      // Buscar por ID
+      const movie = await prisma.movie.findUnique({
+        where: { id }, // Converte o ID para número
+      });
+
+      if (!movie) {
+        return NextResponse.json(
+          { error: "Filme não encontrado." },
+          { status: 404 }
+        );
+      }
+
+      return NextResponse.json(movie);
+    } else {
+
+      const movies = await prisma.movie.findMany();
+
+      return NextResponse.json({ movies });
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "Erro ao buscar os filmes." },

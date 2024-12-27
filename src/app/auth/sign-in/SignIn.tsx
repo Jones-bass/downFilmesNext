@@ -1,15 +1,13 @@
 'use client'
 
-
 import { z } from 'zod';
-import { FiLock, FiMail, FiUser } from 'react-icons/fi';
+import { FiLock, FiMail } from 'react-icons/fi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FormProvider } from 'react-hook-form';
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Input } from '../../components/Input';
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { useRouter } from "next/navigation";
 
 import Link from 'next/link';
 import { Button } from '@/app/components/Button';
@@ -17,20 +15,9 @@ import Image from 'next/image';
 import logo from '../../../../public/logo2.png'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const createUserSchema = z.object({
-  name: z
-    .string()
-    .min(1, {
-      message: 'O nome é obrigatório',
-    })
-    .transform((name) => {
-      return name
-        .trim()
-        .split(' ')
-        .map((word) => word[0].toLocaleUpperCase().concat(word.substring(1)))
-        .join(' ')
-    }),
   email: z
     .string()
     .min(1, {
@@ -53,19 +40,18 @@ const createUserSchema = z.object({
     .regex(/[^A-Za-z0-9]/, {
       message: 'A senha deve ter pelo menos um caractere especial.',
     }),
-})
+});
 
 type CreateUserData = z.infer<typeof createUserSchema>;
 
-export default function Register() {
+export default function SignIn() {
   const router = useRouter();
-
+  
   const [loading, setLoading] = useState(false);
 
   const form = useForm<CreateUserData>({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     }
@@ -76,7 +62,7 @@ export default function Register() {
     formState: { errors, isSubmitting },
   } = form;
 
-  const handleOnSubmit = async (values: CreateUserData) => {
+  const onSubmit = async (values: CreateUserData) => {
     setLoading(true);
 
     try {
@@ -97,16 +83,17 @@ export default function Register() {
 
       if (user) {
         form.reset(); 
-        toast.success('Usuário cadastrado com Sucesso.')
+        toast.success('Login efetuado com sucesso.')
+        router.push('/register'); 
+        
         router.refresh(); 
       } 
     } catch (error: any) {
-      toast.error('Ocorreu um erro ao se cadastrar, tente novamente!')
+      toast.error('Ocorreu um erro ao se conectar, tente novamente!')
     } finally {
       setLoading(false); 
     }
   };
-
 
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900">
@@ -121,17 +108,10 @@ export default function Register() {
 
         <FormProvider {...form}>
           <form
-            onSubmit={handleSubmit(handleOnSubmit)}
+            onSubmit={form.handleSubmit(onSubmit)}
             className="w-full text-center space-y-6"
           >
-            <h2 className="text-xl font-light text-gray-700">Realize seu Cadastro</h2>
-            <Input
-              name="name"
-              placeholder="Nome"
-              icon={FiUser}
-              errorMessage={errors?.name?.message ?? ''}
-            />
-
+            <h2 className="text-xl font-light text-gray-700">Acesse sua conta</h2>
             <Input
               name="email"
               placeholder="E-mail"
@@ -147,20 +127,20 @@ export default function Register() {
               errorMessage={errors?.password?.message ?? ''}
             />
 
-            <Button title="Cadastrar" size="large" type="submit" disabled={loading}>
+            <Button title="Login" size="large" type="submit" disabled={loading}>
               {loading ? (
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
               ) : (
-                'Cadastrar'
+                'Login'
               )}
             </Button>
           </form>
         </FormProvider>
 
         <Link
-          href="/auth/forgot-password"
+          href="/auth/sign-up"
           className="mt-4 flex items-center text-gray-500 hover:text-gray-700 transition">
-          Esqueci minha senha
+          Quero me cadastrar
         </Link>
       </div>
     </div>

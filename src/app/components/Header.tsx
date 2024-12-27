@@ -65,7 +65,7 @@ export default function Header() {
             />
           </form>
 
-          <Link href='/auth/login' className='flex items-center cursor-pointer space-x-2 hover:text-gray-300 transition'>
+          <Link href='/auth/sign-in' className='flex items-center cursor-pointer space-x-2 hover:text-gray-300 transition'>
             <CiLogin className='text-lg' />
             <span className="hidden sm:block text-sm md:text-lg">Área Membro</span>
           </Link>

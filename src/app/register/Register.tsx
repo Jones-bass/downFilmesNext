@@ -34,7 +34,7 @@ const movieSchema = z.object({
 
 type MovieFormData = z.infer<typeof movieSchema>;
 
-export default function MovieForm() {
+export default function Register() {
   const [loading, setLoading] = useState(false);
 
   const form = useForm<MovieFormData>({
@@ -104,7 +104,6 @@ export default function MovieForm() {
             onSubmit={handleSubmit(handleOnSubmit)}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
-            {/* Title ocupa todas as colunas */}
             <div className="col-span-1 sm:col-span-2">
               <Input
                 name="title"

@@ -46,7 +46,7 @@ type CreateUserData = z.infer<typeof createUserSchema>;
 
 export default function SignIn() {
   const router = useRouter();
-  
+
   const [loading, setLoading] = useState(false);
 
   const form = useForm<CreateUserData>({
@@ -82,16 +82,13 @@ export default function SignIn() {
       }
 
       if (user) {
-        form.reset(); 
         toast.success('Login efetuado com sucesso.')
-        router.push('/register'); 
-        
-        router.refresh(); 
-      } 
+        router.push('/dashboard');
+      }
     } catch (error: any) {
       toast.error('Ocorreu um erro ao se conectar, tente novamente!')
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 

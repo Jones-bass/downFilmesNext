@@ -13,7 +13,6 @@ export async function GET(request: NextRequest) {
     }
   } catch (error) {
     console.log("Auth Callback", error)
-
   }
   return NextResponse.redirect(requestUrl.origin) 
 }

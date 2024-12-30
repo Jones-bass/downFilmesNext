@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MovieProps } from "../types/movie";
+import { MovieProps } from "../../../types/movie";
 import { Info } from "./Info";
 import { useRouter } from "next/navigation"; 
 

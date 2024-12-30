@@ -24,13 +24,13 @@ const movieSchema = z.object({
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id"); // Verifica se existe um ID na query string
+  const id = searchParams.get("id");
+  const search = searchParams.get("search");
 
   try {
     if (id) {
-      // Buscar por ID
       const movie = await prisma.movie.findUnique({
-        where: { id }, // Converte o ID para número
+        where: { id },
       });
 
       if (!movie) {
@@ -41,10 +41,26 @@ export async function GET(req: Request) {
       }
 
       return NextResponse.json(movie);
+    } else if (search) {
+      // Busca por termo no título ou gênero
+      const movies = await prisma.movie.findMany({
+        where: {
+          OR: [
+            { title: { contains: search } },
+          ],
+        },
+      });
+
+      if (movies.length === 0) {
+        return NextResponse.json(
+          { message: "Nenhum filme encontrado." },
+          { status: 404 }
+        );
+      }
+      return NextResponse.json(movies);
     } else {
 
       const movies = await prisma.movie.findMany();
-
       return NextResponse.json({ movies });
     }
   } catch (error) {

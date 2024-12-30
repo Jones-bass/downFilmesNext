@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { MovieProps } from "../types/movie";
+import { MovieProps } from "../../../types/movie";
 import { api } from "@/service/api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,7 @@ import { BiTrash } from "react-icons/bi";
 import { FaPlusCircle, FaRegEdit } from "react-icons/fa";
 import logo from '../../../public/logo3.png'
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Dashboard() {
   const [movies, setMovies] = useState<MovieProps[]>([]);
@@ -31,7 +32,7 @@ export default function Dashboard() {
     fetchMovies();
   }, []);
 
-  const handleDelete = async (id: string,title: string) => {
+  const handleDelete = async (id: string, title: string) => {
     if (confirm(`"Tem certeza que deseja excluir este filme ${title}?"`)) {
       try {
         await api.delete(`/api/movies/${id}`);
@@ -58,19 +59,21 @@ export default function Dashboard() {
   return (
     <div className="container mx-auto p-4">
       <div className="flex items-center p-4 justify-between mb-4">
-        <Image
-          src={logo}
-          alt='Logo'
-          width={150}
-          height={150}
-          className='cursor-pointer ml-4 m-4'
-        />
+        <Link href={'/'}>
+          <Image
+            src={logo}
+            alt='Logo'
+            width={150}
+            height={150}
+            className='cursor-pointer ml-4 m-4'
+          />
+        </Link>
 
         <button
           onClick={() => router.push("/register")}
           className="flex items-center gap-2 bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded transition"
         >
-          <FaPlusCircle /> 
+          <FaPlusCircle />
           Adicionar
         </button>
       </div>

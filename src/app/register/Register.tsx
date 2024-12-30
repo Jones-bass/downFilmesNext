@@ -11,6 +11,7 @@ import { Input } from '@/app/components/Input';
 import logo from '../../../public/logo2.png'
 import Image from 'next/image';
 import { api } from '@/service/api';
+import Link from 'next/link';
 
 const movieSchema = z.object({
   title: z.string().min(1, { message: 'O título é obrigatório.' }),
@@ -66,38 +67,40 @@ export default function Register() {
   } = form;
 
   const handleOnSubmit = async (values: MovieFormData) => {
-    setLoading(true); 
-    
+    setLoading(true);
+
     try {
       const response = await api.post<MovieFormData>('/api/movies', values);
 
       console.log(response)
       toast.success('Filme criado com sucesso!');
-      form.reset(); 
+      form.reset();
     } catch (error: any) {
-    
+
       toast.error(error.response?.data?.message || 'Erro ao criar filme.');
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
   return (
     <div className="flex items-center justify-center p-4 min-h-screen bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900">
       <div className="w-full max-w-4xl bg-white p-4 sm:p-6 md:p-8 shadow-lg rounded-lg">
-        <div className="flex items-center justify-center">
-          <Image
-            src={logo}
-            alt="Logo"
-            width={200}
-            height={200}
-            className="cursor-pointer mb-6 mt-6"
-          />
-        </div>
+        <div className="flex mb-8 items-center text-center justify-between">
+          <Link href={'/'}>
+            <Image
+              src={logo}
+              alt="Logo"
+              width={180}
+              height={180}
+              className="cursor-pointer md:w-44"
+            />
+          </Link>
 
-        <h2 className="text-2xl font-light text-gray-700 mb-8 text-center">
-          Cadastro de Filme
+        <h2 className="lg:text-2xl md:text-1xl font-light text-gray-700 text-center">
+          Cadastrar Filme
         </h2>
+        </div>
 
         <FormProvider {...form}>
           <form

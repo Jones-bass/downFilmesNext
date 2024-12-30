@@ -49,6 +49,10 @@ export default function SignIn() {
 
   const [loading, setLoading] = useState(false);
 
+  const goToSignUp = () => {
+    router.push('/auth/sign-up');
+  };
+
   const form = useForm<CreateUserData>({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
@@ -59,7 +63,7 @@ export default function SignIn() {
 
   const {
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = form;
 
   const onSubmit = async (values: CreateUserData) => {
@@ -69,19 +73,16 @@ export default function SignIn() {
       const supabase = createClientComponentClient();
       const { email, password } = values;
 
-      const { error, data: { user } } = await supabase.auth.signUp({
+      const { error, data: { session } } = await supabase.auth.signInWithPassword({
         email,
-        password,
-        options: {
-          emailRedirectTo: `${location.origin}/auth/callback`
-        }
+        password
       });
 
       if (error) {
         throw new Error(error.message);
       }
 
-      if (user) {
+      if (session) {
         toast.success('Login efetuado com sucesso.')
         router.push('/dashboard');
       }
@@ -95,13 +96,15 @@ export default function SignIn() {
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900">
       <div className="flex flex-col justify-center items-center w-full max-w-md bg-white p-6 shadow-lg rounded-lg">
-        <Image
-          src={logo}
-          alt='Logo'
-          width={150}
-          height={150}
-          className='cursor-pointer mb-6 mt-6'
-        />
+        <Link href={'/'}>
+          <Image
+            src={logo}
+            alt='Logo'
+            width={150}
+            height={150}
+            className='cursor-pointer mb-6 mt-6'
+          />
+        </Link>
 
         <FormProvider {...form}>
           <form
@@ -134,11 +137,10 @@ export default function SignIn() {
           </form>
         </FormProvider>
 
-        <Link
-          href="/auth/sign-up"
+        <button onClick={goToSignUp}
           className="mt-4 flex items-center text-gray-500 hover:text-gray-700 transition">
           Quero me cadastrar
-        </Link>
+        </button>
       </div>
     </div>
   );

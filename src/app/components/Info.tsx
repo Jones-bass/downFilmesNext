@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { BiDownArrowCircle } from 'react-icons/bi';
 import { BsPlay, BsSpeakerFill } from 'react-icons/bs';
-import { MovieProps } from '../types/movie';
+import { MovieProps } from '../../../types/movie';
 import { MdDateRange } from 'react-icons/md';
 import { Rated } from './Rated';
 

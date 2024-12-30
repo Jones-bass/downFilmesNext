@@ -8,16 +8,28 @@ import Image from 'next/image';
 import { CiLogin } from 'react-icons/ci';
 import { useState } from 'react';
 import { MovieProps } from '../../../types/movie';
-import { toast } from 'react-toastify';
-import { api } from '@/service/api';
 import { useRouter } from 'next/navigation';
+import { api } from '@/service/api';
+import { toast } from 'react-toastify';
+
+export interface Movie {
+  movie: MovieProps;
+}
 
 export default function Header() {
-  const isScrolled = useScroll();
   const router = useRouter();
-  
+
+  const isScrolled = useScroll();
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<MovieProps[]>([]);
+
+  const goToLogin = () => {
+    router.push('/auth/sign-in');
+  };
+
+  const goToIdMovie = ({ movie }: Movie) => {
+    router.push(`/movie/${movie.id}`);
+  };
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,24 +41,25 @@ export default function Header() {
   
     try {
       const response = await api.get(`/api/movies?search=${searchTerm}`);
-      setSearchResults(response.data); 
+      setSearchResults(response.data); // Define os resultados da API
     } catch (error) {
       toast.error('Erro ao buscar filmes.');
     }
   };
-
+  
   const fetchMovieById = async (id: string) => {
     try {
       const response = await api.get(`/api/movies?id=${id}`);
       const movie = response.data;
-      console.log(movie)
   
+      // Redireciona para a página do filme com o ID
       router.push(`/movie/${id}`);
     } catch (error) {
       toast.error('Erro ao carregar os dados do filme.');
     }
   };
   
+
 
   return (
     <>
@@ -83,38 +96,33 @@ export default function Header() {
             />
           </form>
 
-          <Link href='/auth/sign-in' className='flex items-center cursor-pointer space-x-2 hover:text-gray-300 transition'>
+          <button onClick={goToLogin} className='flex items-center cursor-pointer space-x-2 hover:text-gray-300 transition'>
             <CiLogin className='text-lg' />
             <span className="hidden sm:block text-sm md:text-lg">Área Membro</span>
-          </Link>
+          </button>
         </div>
       </header>
 
       {searchResults.length > 0 && (
-        <div className="absolute z-50 cursor-pointer top-6 md:top-12 lg:top-14 right-4 md:right-40 lg:right-60 bg-opacity-90 p-2 text-white">
-          <ul>
-            {searchResults.map((movie: MovieProps) => (
-             
-             <li key={movie.id} className="py-2 border-b border-gray-600">
-             <div 
-               onClick={() => fetchMovieById(movie.id)}
-               className="cursor-pointer"
-             >
-               <div className="flex items-center space-x-4">
-                 <img
-                   src={movie.image}
-                   alt={movie.title}
-                   className="w-12 h-16 object-cover"
-                 />
-                 <div>
-                   <h3 className="font-bold text-lg">{movie.title}</h3>
-                   <p className="font-thin text-sm">{movie.genre}</p>
-                 </div>
-               </div>
-             </div>
-           </li>
-            ))}
-          </ul>
+        <div className="absolute cursor-pointer bg-red-400 top-6 md:top-12 lg:top-14 right-4 md:right-40 lg:right-60 bg-opacity-90 p-2 text-white">
+          {searchResults.map((movie: MovieProps) => (
+            <button 
+            key={movie.id}
+    onClick={() => fetchMovieById(movie.id)} >
+            
+              <div className="flex items-center space-x-4">
+                <img
+                  src={movie.image}
+                  alt={movie.title}
+                  className="w-12 h-16 object-cover"
+                />
+                <div>
+                  <h3 className="font-bold text-lg">{movie.title}</h3>
+                  <p className="font-thin text-sm">{movie.genre}</p>
+                </div>
+              </div>
+            </button>
+          ))}
         </div>
       )}
 

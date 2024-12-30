@@ -5,8 +5,9 @@ import { Banner } from "./components/Banner";
 import Header from "./components/Header";
 import { Card } from "./components/Card";
 import { api } from "@/service/api";
-import { MovieProps } from "./types/movie";
+import { MovieProps } from "../../types/movie";
 import { toast } from "react-toastify";
+import { TokensIcon } from "@radix-ui/react-icons";
 
 export default function Movies() {
   const [movies, setMovies] = useState<MovieProps[]>([])
@@ -28,6 +29,14 @@ export default function Movies() {
 
     fetchMovies()
   }, [])
+
+  if (loading) {
+      return (
+        <div className="min-h-screen flex items-center justify-center">
+          <TokensIcon className="h-20 w-20 animate-spin font-extralight text-white" />
+        </div>
+      );
+    }
 
   return (
     <div className='relative bg-gradient-to-b pb-8'>

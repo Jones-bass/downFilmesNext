@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { BiDownArrowCircle } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import { MovieProps } from "@/app/types/movie";
+import { MovieProps } from "../../../../types/movie";
 import { Button } from "@/app/components/Button";
 import { TokensIcon } from "@radix-ui/react-icons";
 import Image from "next/image";

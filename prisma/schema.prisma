@@ -14,8 +14,6 @@ model Movie {
   id          String   @id @default(uuid())
   title       String   @unique
   year        String
-  rated       String
-  released    String
   runtime     String
   genre       String
   director    String
@@ -24,10 +22,8 @@ model Movie {
   description String
   language    String
   country     String
-  awards      String
   image       String
   imdbRating  String
-  imdbVotes   String
   type        String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

@@ -5,8 +5,6 @@ import { z } from "zod";
 const movieSchema = z.object({
   title: z.string().min(1, { message: "O título é obrigatório." }),
   year: z.string().min(1, { message: "O year é obrigatório." }),
-  rated: z.string().min(1, { message: "O título é obrigatório." }),
-  released: z.string().min(1, { message: "O released é obrigatório." }),
   runtime: z.string().min(1, { message: "O runtime é obrigatório." }),
   genre: z.string().min(1, { message: "O genre é obrigatório." }),
   director: z.string().min(1, { message: "O director é obrigatório." }),
@@ -15,10 +13,8 @@ const movieSchema = z.object({
   description: z.string().min(1, { message: "O description é obrigatório." }),
   language: z.string().min(1, { message: "O language é obrigatório." }),
   country: z.string().min(1, { message: "O country é obrigatório." }),
-  awards: z.string().min(1, { message: "O awards é obrigatório." }),
   image: z.string().min(1, { message: "O image é obrigatório." }),
   imdbRating: z.string().min(1, { message: "O imdbRating é obrigatório." }),
-  imdbVotes: z.string().min(1, { message: "O imdbVotes é obrigatório." }),
   type: z.string().min(1, { message: "O type é obrigatório." }),
 });
 
@@ -42,7 +38,6 @@ export async function GET(req: Request) {
 
       return NextResponse.json(movie);
     } else if (search) {
-      // Busca por termo no título ou gênero
       const movies = await prisma.movie.findMany({
         where: {
           OR: [
@@ -80,8 +75,6 @@ export async function POST(req: Request) {
       data: {
         title: validatedData.title,
         year: validatedData.year,
-        rated: validatedData.rated,
-        released: validatedData.released,
         runtime: validatedData.runtime,
         genre: validatedData.genre,
         director: validatedData.director,
@@ -90,10 +83,8 @@ export async function POST(req: Request) {
         description: validatedData.description,
         language: validatedData.language,
         country: validatedData.country,
-        awards: validatedData.awards,
         image: validatedData.image,
         imdbRating: validatedData.imdbRating,
-        imdbVotes: validatedData.imdbVotes,
         type: validatedData.type,
       },
     });
@@ -113,3 +104,43 @@ export async function POST(req: Request) {
     );
   }
 }
+
+export async function DELETE(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json(
+      { error: "ID é obrigatório para excluir um filme." },
+      { status: 400 }
+    );
+  }
+
+  try {
+    const movie = await prisma.movie.findUnique({
+      where: { id },
+    });
+
+    if (!movie) {
+      return NextResponse.json(
+        { error: "Filme não encontrado." },
+        { status: 404 }
+      );
+    }
+
+    await prisma.movie.delete({
+      where: { id },
+    });
+
+    return NextResponse.json(
+      { message: "Filme excluído com sucesso." },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Erro ao excluir o filme." },
+      { status: 500 }
+    );
+  }
+}
+

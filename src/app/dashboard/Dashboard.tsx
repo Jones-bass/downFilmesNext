@@ -33,11 +33,16 @@ export default function Dashboard() {
   }, []);
 
   const handleDelete = async (id: string, title: string) => {
-    if (confirm(`"Tem certeza que deseja excluir este filme ${title}?"`)) {
+    if (confirm(`Tem certeza que deseja excluir este filme ${title}?`)) {
       try {
-        await api.delete(`/api/movies/${id}`);
-        toast.success("Filme excluído com sucesso!");
-        setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+        const response = await api.delete(`/api/movies?id=${id}`);
+        const data = await response.data;
+        if (response) {
+          toast.success("Filme excluído com sucesso!");
+          setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+        } else {
+          toast.error(data.error || "Erro ao excluir o filme.");
+        }
       } catch (error) {
         toast.error("Erro ao excluir o filme.");
       }

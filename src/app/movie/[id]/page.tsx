@@ -63,10 +63,8 @@ export default function MoviePage() {
             className="rounded-xl"
           />
 
-          <div className="space-y-2 text-center sm:text-left">
+          <div className="space-y-2 text-center sm:text-left leading-10">
             <p><strong className="text-lg">Ano:</strong> {movie.year}</p>
-            <p><strong className="text-lg">Classificação:</strong> {movie.rated}</p>
-            <p><strong className="text-lg">Lançamento:</strong> {movie.released}</p>
             <p><strong className="text-lg">Duração:</strong> {movie.runtime}</p>
             <p><strong className="text-lg">Gênero:</strong> {movie.genre}</p>
             <p><strong className="text-lg">Diretor:</strong> {movie.director}</p>
@@ -74,7 +72,6 @@ export default function MoviePage() {
             <p><strong className="text-lg">Atores:</strong> {movie.actors}</p>
             <p><strong className="text-lg">Idioma:</strong> {movie.language}</p>
             <p><strong className="text-lg">País:</strong> {movie.country}</p>
-            <p><strong className="text-lg">Prêmios:</strong> {movie.awards}</p>
             <p><strong className="text-lg">IMDB Rating:</strong> {movie.imdbRating}</p>
             <Button
               icon={BiDownArrowCircle}

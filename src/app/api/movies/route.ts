@@ -144,3 +144,52 @@ export async function DELETE(req: Request) {
   }
 }
 
+export async function PUT(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json(
+      { error: "ID é obrigatório para editar um filme." },
+      { status: 400 }
+    );
+  }
+
+  try {
+    const data = await req.json();
+    const validatedData = movieSchema.parse(data);
+
+    const movie = await prisma.movie.findUnique({
+      where: { id },
+    });
+
+    if (!movie) {
+      return NextResponse.json(
+        { error: "Filme não encontrado." },
+        { status: 404 }
+      );
+    }
+
+    const updatedMovie = await prisma.movie.update({
+      where: { id },
+      data: validatedData,
+    });
+
+    return NextResponse.json(
+      { message: "Filme atualizado com sucesso.", movie: updatedMovie },
+      { status: 200 }
+    );
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: error.errors },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      { error: "Erro ao editar o filme." },
+      { status: 500 }
+    );
+  }
+}

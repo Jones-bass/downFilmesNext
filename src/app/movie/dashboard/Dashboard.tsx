@@ -1,14 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { MovieProps } from "../../../types/movie";
+import { MovieProps } from "../../../../types/movie";
 import { api } from "@/service/api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { TokensIcon } from "@radix-ui/react-icons";
 import { BiTrash } from "react-icons/bi";
 import { FaPlusCircle, FaRegEdit } from "react-icons/fa";
-import logo from '../../../public/logo3.png'
+import logo from '../../../../public/logo3.png'
 import Image from "next/image";
 import Link from "next/link";
 
@@ -50,7 +50,7 @@ export default function Dashboard() {
   };
 
   const handleEdit = (id: string) => {
-    router.push(`/admin/edit/${id}`);
+    router.push(`/movie/edit/${id}`);
   };
 
   if (loading) {
@@ -73,9 +73,8 @@ export default function Dashboard() {
             className='cursor-pointer ml-4 m-4'
           />
         </Link>
-
         <button
-          onClick={() => router.push("/register")}
+          onClick={() => router.push("/movie/register")}
           className="flex items-center gap-2 bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded transition"
         >
           <FaPlusCircle />
@@ -119,3 +118,4 @@ export default function Dashboard() {
     </div>
   );
 }
+

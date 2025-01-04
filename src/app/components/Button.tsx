@@ -9,12 +9,14 @@ interface ButtonProps {
   icon?: React.ComponentType<IconBaseProps>
   onClick?: () => void
   children?: ReactNode
+  className?: string
 }
 
 export function Button({
   title,
   icon: Icon,
   children,
+  className = '',
   onClick,
   size = 'medium',
 }: ButtonProps) {
@@ -26,7 +28,7 @@ export function Button({
 
   return (
     <button
-      className={`flex items-center justify-center gap-2 bg-blue-500 text-white rounded-md transition hover:bg-blue-600 ${sizeClasses[size]}`}
+      className={`flex items-center justify-center gap-2 bg-blue-500 text-white rounded-md transition hover:bg-blue-600 ${sizeClasses[size]} ${className}`}
       onClick={onClick}
     >
       {Icon && <Icon size={22} />}

@@ -12,12 +12,17 @@ import logo from '../../../../public/logo3.png'
 import Image from "next/image";
 import Link from "next/link";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { DeleteModal } from "@/app/components/DeleteModal";
 
 export default function Dashboard() {
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const supabase = createClientComponentClient()
+
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false)
+  const [selectedMovieId, setSelectedMovieId] = useState('')
+  const [selectedMovieTitle, setSelectedMovieTitle] = useState('')
 
   useEffect(() => {
     async function fetchMovies() {
@@ -34,22 +39,32 @@ export default function Dashboard() {
     fetchMovies();
   }, []);
 
-  const handleDelete = async (id: string, title: string) => {
-    if (confirm(`Tem certeza que deseja excluir este filme ${title}?`)) {
-      try {
-        const response = await api.delete(`/api/movies?id=${id}`);
-        const data = await response.data;
-        if (response) {
-          toast.success("Filme excluído com sucesso!");
-          setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
-        } else {
-          toast.error(data.error || "Erro ao excluir o filme.");
-        }
-      } catch (error) {
-        toast.error("Erro ao excluir o filme.");
+  const openDeleteModal = (id: string, title: string) => {
+    setSelectedMovieId(id)
+    setSelectedMovieTitle(title)
+    setDeleteModalOpen(true)
+  }
+
+  const closeDeleteModal = () => {
+    setDeleteModalOpen(false)
+    setSelectedMovieId('')
+    setSelectedMovieTitle('')
+  }
+
+  const confirmDelete = async () => {
+    try {
+      const response = await api.delete(`/api/movies?id=${selectedMovieId}`)
+      if (response) {
+        toast.success('Filme excluído com sucesso!')
+        setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== selectedMovieId))
+        closeDeleteModal()
+      } else {
+        toast.error('Erro ao excluir o filme.')
       }
+    } catch (error) {
+      toast.error('Erro ao excluir o filme.')
     }
-  };
+  }
 
   const handleEdit = (id: string) => {
     router.push(`/movie/edit/${id}`);
@@ -82,17 +97,17 @@ export default function Dashboard() {
           />
         </Link>
         <div className="flex gap-6">
-        <button
-          onClick={() => router.push("/movie/register")}
-          className="flex items-center gap-2 bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded transition"
-        >
-          <FaPlusCircle />
-          Adicionar
-        </button>
+          <button
+            onClick={() => router.push("/movie/register")}
+            className="flex items-center gap-2 bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded transition"
+          >
+            <FaPlusCircle />
+            Adicionar
+          </button>
 
-        <button onClick={handleSignOut}>
-          <BiLogOut className="h-6 w-6" />
-        </button>
+          <button onClick={handleSignOut}>
+            <BiLogOut className="h-6 w-6" />
+          </button>
         </div>
       </div>
 
@@ -119,13 +134,19 @@ export default function Dashboard() {
                       className="text-white hover:text-blue-400 cursor-pointer transition-transform hover:scale-125"
                     />
                     <BiTrash
-                      onClick={() => handleDelete(movie.id, movie.title)}
+                      onClick={() => openDeleteModal(movie.id, movie.title)}
                       className="text-white hover:text-red-400 cursor-pointer transition-transform hover:scale-125"
                     />
                   </div>
                 </td>
               </tr>
             ))}
+            <DeleteModal
+              isOpen={isDeleteModalOpen}
+              onClose={closeDeleteModal}
+              onConfirm={confirmDelete}
+              movieTitle={selectedMovieTitle}
+            />
           </tbody>
         </table>
       </div>

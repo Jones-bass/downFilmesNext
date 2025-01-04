@@ -12,8 +12,8 @@ import Image from 'next/image';
 import { api } from '@/service/api';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-// Atualize o schema para incluir os campos do backend
 const movieSchema = z.object({
   title: z.string().min(1, { message: 'O título é obrigatório.' }),
   year: z.string().min(1, { message: 'O ano é obrigatório.' }),
@@ -33,6 +33,8 @@ const movieSchema = z.object({
 type MovieFormData = z.infer<typeof movieSchema>;
 
 export default function Edit() {
+  const supabase = createClientComponentClient()
+
   const params = useParams();
   const id = params.id; 
   
@@ -59,6 +61,26 @@ export default function Edit() {
   });
 
   const { handleSubmit, formState: { errors } } = form;
+
+  useEffect(() => {
+    async function checkAuth() {
+      let loggedIn = false;
+
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) loggedIn = true;
+      } catch (error) {
+        console.log("Erro ao verificar autenticação:", error);
+      } finally {
+        if (!loggedIn) {
+          router.push('/'); 
+        }
+      }
+    }
+
+    checkAuth();
+  }, [router]);
+
 
   useEffect(() => {
     async function fetchMovie() {

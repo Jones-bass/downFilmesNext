@@ -6,16 +6,18 @@ import { api } from "@/service/api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { TokensIcon } from "@radix-ui/react-icons";
-import { BiTrash } from "react-icons/bi";
+import { BiLogOut, BiTrash } from "react-icons/bi";
 import { FaPlusCircle, FaRegEdit } from "react-icons/fa";
 import logo from '../../../../public/logo3.png'
 import Image from "next/image";
 import Link from "next/link";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function Dashboard() {
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const supabase = createClientComponentClient()
 
   useEffect(() => {
     async function fetchMovies() {
@@ -53,6 +55,12 @@ export default function Dashboard() {
     router.push(`/movie/edit/${id}`);
   };
 
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    router.push('/');
+    router.refresh()
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -73,6 +81,7 @@ export default function Dashboard() {
             className='cursor-pointer ml-4 m-4'
           />
         </Link>
+        <div className="flex gap-6">
         <button
           onClick={() => router.push("/movie/register")}
           className="flex items-center gap-2 bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded transition"
@@ -80,6 +89,11 @@ export default function Dashboard() {
           <FaPlusCircle />
           Adicionar
         </button>
+
+        <button onClick={handleSignOut}>
+          <BiLogOut className="h-6 w-6" />
+        </button>
+        </div>
       </div>
 
       <div className="overflow-x-auto p-2">

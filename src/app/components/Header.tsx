@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { BiSearch } from 'react-icons/bi';
 import { useScroll } from '../hooks/useScroll';
-import logo from '../../../public/logo.png'
-import Image from 'next/image';
+
 import { CiLogin } from 'react-icons/ci';
 import { useState } from 'react';
 import { MovieProps } from '../../../types/movie';
@@ -12,27 +11,27 @@ import { toast } from 'react-toastify';
 import { api } from '@/service/api';
 import { useRouter } from 'next/navigation';
 
+import logo from '../../../public/logo.png'
+import Image from 'next/image';
+
 export default function Header() {
   const isScrolled = useScroll();
   const router = useRouter();
-  
+
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<MovieProps[]>([]);
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     if (searchTerm.trim() === '') {
       setSearchResults([]);
       return;
     }
-  
-    try {
-      const response = await api.get(`/api/movies?search=${searchTerm}`);
-      setSearchResults(response.data); 
-    } catch (error) {
-      toast.error('Erro ao buscar filmes.');
-    }
+
+    const response = await api.get(`/api/movies?search=${searchTerm}`);
+    setSearchResults(response.data);
+
   };
 
   const fetchMovieById = async (id: string) => {
@@ -40,13 +39,13 @@ export default function Header() {
       const response = await api.get(`/api/movies?id=${id}`);
       const movie = response.data;
       console.log(movie)
-  
+
       router.push(`/movie/${id}`);
     } catch (error) {
       toast.error('Erro ao carregar os dados do filme.');
     }
   };
-  
+
 
   return (
     <>
@@ -94,25 +93,27 @@ export default function Header() {
         <div className="absolute z-50 cursor-pointer top-6 md:top-12 lg:top-14 right-4 md:right-40 lg:right-60 bg-opacity-90 p-2 text-white">
           <ul>
             {searchResults.map((movie: MovieProps) => (
-             
-             <li key={movie.id} className="py-2 border-b border-gray-600">
-             <div 
-               onClick={() => fetchMovieById(movie.id)}
-               className="cursor-pointer"
-             >
-               <div className="flex items-center space-x-4">
-                 <img
-                   src={movie.image}
-                   alt={movie.title}
-                   className="w-12 h-16 object-cover"
-                 />
-                 <div>
-                   <h3 className="font-bold text-lg">{movie.title}</h3>
-                   <p className="font-thin text-sm">{movie.genre}</p>
-                 </div>
-               </div>
-             </div>
-           </li>
+
+              <li key={movie.id} className="py-2 border-b border-gray-600">
+                <div
+                  onClick={() => fetchMovieById(movie.id)}
+                  className="cursor-pointer"
+                >
+                  <div className="flex items-center space-x-4">
+                    <Image
+                      src={movie.image}
+                      alt={movie.title}
+                      width={58}
+                      height={74}
+                      className="object-cover"
+                    />
+                    <div>
+                      <h3 className="font-bold text-lg">{movie.title}</h3>
+                      <p className="font-thin text-sm">{movie.genre}</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
             ))}
           </ul>
         </div>

@@ -1,7 +1,10 @@
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
-import { NextResponse } from "next/server";
 import { z } from "zod";
 
+// Esquema de validação com zod
 const movieSchema = z.object({
   title: z.string().min(1, { message: "O título é obrigatório." }),
   year: z.string().min(1, { message: "O year é obrigatório." }),
@@ -18,12 +21,22 @@ const movieSchema = z.object({
   type: z.string().min(1, { message: "O type é obrigatório." }),
 });
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
+// Função GET
+export async function GET(request: NextRequest) {
+  const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get("code");
+  const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   const search = searchParams.get("search");
 
   try {
+    // Trecho de autenticação com Supabase
+    if (code) {
+      const supabase = createRouteHandlerClient({ cookies });
+      await supabase.auth.exchangeCodeForSession(code);
+    }
+
+    // Lógica para buscar os filmes
     if (id) {
       const movie = await prisma.movie.findUnique({
         where: { id },
@@ -40,9 +53,7 @@ export async function GET(req: Request) {
     } else if (search) {
       const movies = await prisma.movie.findMany({
         where: {
-          OR: [
-            { title: { contains: search } },
-          ],
+          OR: [{ title: { contains: search } }],
         },
       });
 
@@ -54,11 +65,11 @@ export async function GET(req: Request) {
       }
       return NextResponse.json(movies);
     } else {
-
       const movies = await prisma.movie.findMany();
       return NextResponse.json({ movies });
     }
   } catch (error) {
+    console.log("Auth Callback", error);
     return NextResponse.json(
       { error: "Erro ao buscar os filmes." },
       { status: 500 }
@@ -66,36 +77,20 @@ export async function GET(req: Request) {
   }
 }
 
-export async function POST(req: Request) {
+// Função POST
+export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
     const validatedData = movieSchema.parse(data);
 
     const movie = await prisma.movie.create({
-      data: {
-        title: validatedData.title,
-        year: validatedData.year,
-        runtime: validatedData.runtime,
-        genre: validatedData.genre,
-        director: validatedData.director,
-        writer: validatedData.writer,
-        actors: validatedData.actors,
-        description: validatedData.description,
-        language: validatedData.language,
-        country: validatedData.country,
-        image: validatedData.image,
-        imdbRating: validatedData.imdbRating,
-        type: validatedData.type,
-      },
+      data: validatedData,
     });
 
     return NextResponse.json({ message: "Criado com sucesso", movie });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: error.errors },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: error.errors }, { status: 400 });
     }
 
     return NextResponse.json(
@@ -105,7 +100,8 @@ export async function POST(req: Request) {
   }
 }
 
-export async function DELETE(req: Request) {
+// Função DELETE
+export async function DELETE(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
 
@@ -144,7 +140,8 @@ export async function DELETE(req: Request) {
   }
 }
 
-export async function PUT(req: Request) {
+// Função PUT
+export async function PUT(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
 
@@ -181,10 +178,7 @@ export async function PUT(req: Request) {
     );
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: error.errors },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: error.errors }, { status: 400 });
     }
 
     return NextResponse.json(

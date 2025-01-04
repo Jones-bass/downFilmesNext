@@ -6,7 +6,7 @@ import { FiLock, FiMail, FiUser } from 'react-icons/fi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FormProvider } from 'react-hook-form';
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Input } from '../../components/Input';
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
@@ -87,7 +87,7 @@ export default function SignUp() {
         email,
         password,
         options: {
-          emailRedirectTo: `${location.origin}/auth/callback`
+          emailRedirectTo: `${location.origin}/api/movies`
         }
       });
 

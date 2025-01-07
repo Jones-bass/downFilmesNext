@@ -21,7 +21,6 @@ const movieSchema = z.object({
   type: z.string().min(1, { message: "O type é obrigatório." }),
 });
 
-// Função GET
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get("code");
@@ -30,13 +29,11 @@ export async function GET(request: NextRequest) {
   const search = searchParams.get("search");
 
   try {
-    // Trecho de autenticação com Supabase
     if (code) {
       const supabase = createRouteHandlerClient({ cookies });
       await supabase.auth.exchangeCodeForSession(code);
     }
 
-    // Lógica para buscar os filmes
     if (id) {
       const movie = await prisma.movie.findUnique({
         where: { id },
@@ -77,7 +74,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// Função POST
 export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
@@ -100,7 +96,6 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Função DELETE
 export async function DELETE(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
@@ -140,7 +135,6 @@ export async function DELETE(req: NextRequest) {
   }
 }
 
-// Função PUT
 export async function PUT(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");

@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aplicação Fullstack para Gerenciamento de Filmes
 
-## Getting Started
+## Este projeto é uma aplicação fullstack desenvolvida com Next.js e TailwindCSS. Utiliza o Prisma para gerenciamento do banco de dados e o Supabase para autenticação. O objetivo principal é explorar e testar a abordagem fullstack, integrando frontend e backend em uma única aplicação para listar, cadastrar e deletar filmes.
 
-First, run the development server:
+# 🚀 Tecnologias Utilizadas
+
+## 📋 Funcionalidades Principais
+
+
+📌Cadastro de filmes com título, descrição e ano de lançamento.
+
+📌 Listagem de todos os filmes cadastrados.
+
+📌 Exclusão de filmes cadastrados.
+
+<div align="left">
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg" height="40" alt="react logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="40" alt="nextjs logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="40" alt="nodejs logo"  />
+</div>
+
+---
+
+# 🔐 Autenticação
+
+- Registro e login de usuários utilizando o Supabase.
+
+- Controle de acesso a funcionalidades restritas com autenticação segura.
+
+# 🚀 Fluxo de Uso
+
+1. Cadastro de Filmes
+Os usuários autenticados podem cadastrar novos filmes fornecendo as informações necessárias.
+
+2. Listagem de Filmes
+Todos os filmes cadastrados são exibidos em uma lista com detalhes básicos, permitindo fácil visualização.
+
+3. Exclusão de Filmes
+Filmes podem ser removidos do sistema por meio de um botão de exclusão disponível na listagem.
+
+# 📦 Exemplo de Uso
+
+### Cadastro de Filme
+
+POST /api/movies
+Content-Type: application/json
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+{
+  "title": "Inception",
+  "description": "Um thriller psicológico sobre sonhos dentro de sonhos.",
+  "year": 2010
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Listagem de Filmes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+GET /api/movies
 
-## Learn More
+Resposta:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+[
+  {
+    "id": 1,
+    "title": "Inception",
+    "description": "Um thriller psicológico sobre sonhos dentro de sonhos.",
+    "year": 2010
+  }
+]
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Exclusão e Edição de Filme
 
-## Deploy on Vercel
+UPDATE /api/movies/:id
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+DELETE /api/movies/:id
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📝 Licença
+
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para obter mais informações.

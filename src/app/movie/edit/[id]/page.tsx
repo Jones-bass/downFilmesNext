@@ -137,13 +137,13 @@ export default function Edit() {
   };
 
   return (
-    <div className="flex items-center justify-center p-4 min-h-screen bg-gray-100">
-      <div className="w-full max-w-4xl bg-white p-6 shadow-lg rounded-lg">
+    <div className="flex items-center justify-center p-4 min-h-screen">
+      <div className="w-full max-w-4xl bg-gray-900 p-6 shadow-lg rounded-lg">
         <div className="flex justify-between items-center mb-6">
           <Link href={'/movie/dashboard'}>
             <Image src="/logo.png" alt="Logo" width={100} height={100} />
           </Link>
-          <h2 className="text-xl font-bold">{id ? 'Editar Filme' : 'Cadastrar Filme'}</h2>
+          <h2 className="text-xl text-gray-500 font-bold">{id ? 'Editar Filme' : 'Cadastrar Filme'}</h2>
         </div>
 
         <FormProvider {...form}>
